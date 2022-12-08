@@ -49,6 +49,13 @@ echo "Level: $INPUT_PHPSTAN_LEVEL"
 
 echo "Running PHPStan"
 cd ${GITHUB_WORKSPACE}
+echo $MAGENTO_ROOT/vendor/bin/phpstan analyse \
+    --level $INPUT_PHPSTAN_LEVEL \
+    --no-progress \
+    --memory-limit=4G \
+    --configuration ${CONFIGURATION_FILE} \
+    ${GITHUB_WORKSPACE}
+
 php $MAGENTO_ROOT/vendor/bin/phpstan analyse \
     --level $INPUT_PHPSTAN_LEVEL \
     --no-progress \
